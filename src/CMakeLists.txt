@@ -1,7 +1,7 @@
 project(mbedcrypto CXX)
 
-set(MBEDTLS_SRCDIR ${CMAKE_SOURCE_DIR}/3rdparty/mbedtls/library)
-set(MBEDTLS_INCDIR ${CMAKE_SOURCE_DIR}/3rdparty/mbedtls/include)
+set(MBEDTLS_SRCDIR ${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/mbedtls/library)
+set(MBEDTLS_INCDIR ${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/mbedtls/include)
 #------------------------------------------------------------------------------
 # mbedcrypto main files
 add_library(${PROJECT_NAME}
@@ -147,7 +147,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_14)
 target_include_directories(${PROJECT_NAME}
     PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
         $<INSTALL_INTERFACE:include>
     PRIVATE
         $<BUILD_INTERFACE:${MBEDTLS_INCDIR}>
@@ -164,7 +164,7 @@ install(TARGETS ${PROJECT_NAME} EXPORT MbedcryptoConfig
     ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
     LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR}
     )
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/mbedcrypto
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../include/mbedcrypto
     DESTINATION   ${CMAKE_INSTALL_INCLUDEDIR}
     )
 install(FILES   ${CMAKE_BINARY_DIR}/mbedcrypto_config.h
